@@ -23,16 +23,19 @@ Für den Releasekandidaten wurde bestätigt:
 - SHA-256:
   `f7e7f848cc7c67181d3f7ac73f5abb816b72dacdd0afa2af39682b97c81c2946`.
 
+Eine namentliche Zuordnung von Sounddateien zu den Soundindizes 1 bis 10 ist
+keine Voraussetzung für Version 1.0.0. Anwender wählen und übertragen ihre
+Sounddateien selbst.
+
 ## Noch vor dem Merge
 
-1. Reihenfolge der verwendeten Sounddateien 1 bis 10 dokumentieren.
-2. Deutsche und englische Dokumentation abschließend lesen.
-3. Marken- und Logoausnahme abschließend prüfen.
-4. `python scripts/validate.py` auf dem finalen Branch ausführen.
-5. `python scripts/package_source.py` ausführen.
-6. Finale Release-Dateien und Prüfsummen zusammenstellen.
-7. Draft-Pull-Request auf `Ready for review` setzen.
-8. Pull Request per `Squash and merge` nach `main` übernehmen.
+1. Deutsche und englische Dokumentation abschließend lesen.
+2. Marken- und Logoausnahme abschließend prüfen.
+3. `python scripts/validate.py` auf dem finalen Branch ausführen.
+4. `python scripts/package_source.py` ausführen.
+5. Finale Release-Dateien und Prüfsummen zusammenstellen.
+6. Draft-Pull-Request auf `Ready for review` setzen.
+7. Pull Request per `Squash and merge` nach `main` übernehmen.
 
 ## Tag und GitHub-Release
 
