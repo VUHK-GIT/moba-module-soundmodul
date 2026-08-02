@@ -1,62 +1,64 @@
 # Release process 1.0.0
 
-## Phase 1 – Release candidate in the private repository
+## Principle
 
-1. Bring `release/1.0.0-open-source` to the final source state.
-2. Run `python scripts/validate.py` and wait for GitHub Actions.
-3. Load a documented sound 1 through sound 10 order into the JQ6500.
-4. Build the hardware, including R1 and R2, according to `docs/en/hardware.md`.
-5. Complete the hardware tests in `docs/en/testing.md`.
-6. Build the Windows x64 executable with PureBasic.
-7. Start the executable on a second Windows system or clean user environment and
-   verify COM connection and WebView2 operation.
-8. Run `python scripts/package_source.py`.
-9. Generate SHA-256 checksums for the executable, source ZIP and other release
-   assets.
-10. Record results and known limitations in the draft pull request.
+The release is prepared in the `release/1.0.0-open-source` branch. The
+repository remains private until final approval. Executables, audio files and
+proprietary standalone brand assets are not committed to the source branch.
 
-## Phase 2 – Approve the pull request
+## Confirmed release candidate
 
-1. Check every open item in the draft pull request.
-2. Confirm that the source branch contains no executable, proprietary logo or
-   audio file.
-3. Change the pull request from `Draft` to `Ready for review`.
-4. Review the final diff and file list.
-5. Prefer a **squash merge** into `main` so the first public release has one
-   clear release commit.
+The following release-candidate state has been confirmed:
 
-## Phase 3 – Tag and GitHub Release
+- PureBasic 6.40, Windows x64;
+- hardware test with separate R1 and R2, both 1 kΩ, passed;
+- BUSY values remained unchanged with R2 installed:
+  - idle approximately 2 to 3 ADC counts;
+  - playback approximately 537 to 540 ADC counts;
+- executable tested on the Windows build system;
+- executable also passed a functional test on a second Windows computer;
+- verified executable:
+  `MOBA-Module-Soundmodul-1.0.0-Windows-x64.exe`;
+- SHA-256:
+  `f7e7f848cc7c67181d3f7ac73f5abb816b72dacdd0afa2af39682b97c81c2946`.
 
-1. Create the signed or annotated tag `v1.0.0` on the reviewed merge commit.
+## Remaining work before merge
+
+1. Record the sound-file order for sound indexes 1 through 10.
+2. Perform the final English and German documentation review.
+3. Perform the final brand and logo exclusion review.
+4. Run `python scripts/validate.py` on the final branch.
+5. Run `python scripts/package_source.py`.
+6. Assemble the final release assets and checksum manifest.
+7. Change the draft pull request to `Ready for review`.
+8. Squash merge the pull request into `main`.
+
+## Tag and GitHub Release
+
+After the merge:
+
+1. Create the annotated tag `v1.0.0` on the new `main` commit.
 2. Create a draft GitHub Release.
 3. Upload:
 
-   ```text
-   MOBA-Module-Soundmodul-1.0.0-Windows-x64.exe
-   MOBA-Module-Soundmodul-1.0.0-source.zip
-   moba-module-soundmodul-wiring-de.png
-   moba-module-soundmodul-wiring-en.png
-   SHA256SUMS.txt
-   ```
+```text
+MOBA-Module-Soundmodul-1.0.0-Windows-x64.exe
+MOBA-Module-Soundmodul-1.0.0-source.zip
+moba-module-soundmodul-wiring-de.png
+moba-module-soundmodul-wiring-en.png
+SHA256SUMS.txt
+```
 
-4. Prepare release notes from `CHANGELOG.md` and `CHANGELOG.de.md`.
-5. Download and independently verify the checksums.
-6. Publish the GitHub Release.
+4. Verify release notes and checksums.
+5. Publish the release.
+6. Only then change the repository visibility to public.
+7. While signed out, verify that README, license, documentation and downloads
+   are available as intended.
 
-## Phase 4 – Make the repository public
+## Do not commit to Git
 
-Only after the release is published:
-
-1. Open repository settings.
-2. Under `Settings → General → Danger Zone → Change repository visibility`,
-   change the repository from `Private` to `Public`.
-3. Enter the repository name when GitHub requests confirmation.
-4. Verify without signing in:
-   - README and license are visible;
-   - release `v1.0.0` is accessible;
-   - executable and checksums can be downloaded;
-   - wiring SVGs render correctly;
-   - issues and security guidance are available;
-   - no proprietary brand asset was published accidentally.
-
-The executable belongs in the GitHub Release, not in Git history.
+- Windows executable;
+- ZIP release packages;
+- MP3 or WAV files;
+- proprietary upload tools;
+- the official MOBA-Module logo or icon as a freely reusable standalone asset.
