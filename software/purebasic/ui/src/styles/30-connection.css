@@ -1,0 +1,19 @@
+/* SPDX-License-Identifier: MIT
+ * Copyright (c) 2026 Sven Häber
+ */
+
+/* Connection controls and readable time units */
+.side{grid-template-rows:86px 108px 282px minmax(0,1fr)}
+.connection-panel{grid-template-rows:68px 38px 34px 102px;gap:6px}
+.metrics{grid-template-rows:31px 31px}
+.manual-connect{display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:6px;min-width:0}
+.manual-connect select{width:100%;min-width:0;height:34px;padding:4px 7px;border:1px solid #5a6267;border-radius:3px;background:#202427;color:var(--text);font-size:12px}
+.manual-connect .primary-connect{height:34px;text-align:center;background:#3f6f8d;color:#fff}
+.connection-actions{display:grid;grid-template-columns:1fr;grid-template-rows:repeat(3,30px);gap:6px}
+.connection-actions .secondary{height:30px;padding:0 9px;text-align:left;font-size:10px}
+.global-time-editor{grid-template-columns:minmax(70px,1fr) 34px 84px}
+.global-time-editor select{font-size:12px;padding:3px 5px}
+.sound-card{padding-left:7px;padding-right:7px}
+.options{padding-left:5px;padding-right:5px}
+.interval-time{grid-template-columns:minmax(47px,1fr) 27px 60px;gap:3px;padding-left:0}
+.interval-time select{min-width:60px;width:60px;font-size:11px;padding:2px 3px}

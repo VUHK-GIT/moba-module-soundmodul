@@ -1,0 +1,18 @@
+/* SPDX-License-Identifier: MIT
+ * Copyright (c) 2026 Sven Häber
+ */
+
+/* Open-source fallback wordmark. Official logo injection is optional. */
+.brand-wordmark{
+ width:128px;
+ height:60px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ border:1px solid var(--line-strong);
+ background:var(--panel-alt);
+ color:var(--text);
+ font-size:15px;
+ font-weight:800;
+ letter-spacing:.08em;
+}

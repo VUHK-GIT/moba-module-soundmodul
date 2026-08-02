@@ -1,0 +1,135 @@
+/* SPDX-License-Identifier: MIT
+ * Copyright (c) 2026 Sven Häber
+ */
+
+/* Time editors */
+.random-line{
+ display:grid;
+ grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);
+ gap:7px;
+ align-items:end;
+}
+.global-time-block{display:block;min-width:0}
+.global-time-block>span:first-child{
+ display:block;
+ margin-bottom:4px;
+ color:var(--muted);
+ font-size:10px;
+ font-weight:700;
+}
+.time-editor{
+ display:grid;
+ grid-template-columns:minmax(0,1fr) 34px 64px;
+ gap:4px;
+ min-width:0;
+}
+.global-time-editor{height:44px}
+.time-number{
+ width:100%;
+ min-width:0;
+ height:44px;
+ padding:5px 9px;
+ border:1px solid #5a6267;
+ border-radius:3px;
+ background:#202427;
+ color:var(--text);
+ font-size:16px;
+ font-weight:700;
+ text-align:right;
+ appearance:textfield;
+ -moz-appearance:textfield;
+}
+.time-number::-webkit-outer-spin-button,
+.time-number::-webkit-inner-spin-button{
+ -webkit-appearance:none;
+ margin:0;
+}
+.time-editor select{
+ width:100%;
+ min-width:0;
+ height:44px;
+ padding:4px 5px;
+ border:1px solid #5a6267;
+ border-radius:3px;
+ background:#202427;
+ color:var(--text);
+ font-size:13px;
+}
+.step-stack{
+ display:grid;
+ grid-template-rows:1fr 1fr;
+ gap:3px;
+ min-width:0;
+}
+.time-step{
+ min-width:0;
+ width:100%;
+ height:100%;
+ padding:0;
+ border:1px solid #626a70;
+ border-radius:3px;
+ background:#3a4146;
+ color:#fff;
+ font-size:12px;
+ line-height:1;
+ font-weight:700;
+ cursor:pointer;
+}
+.time-step:hover:not(:disabled){background:#4a5359}
+.interval-time{
+ display:grid;
+ grid-template-columns:minmax(0,1fr) 30px 52px;
+ gap:4px;
+ padding-left:27px;
+ min-width:0;
+ height:40px;
+}
+.interval-time .time-number,
+.interval-time select{height:40px}
+.interval-time .time-number{font-size:15px;padding:4px 6px}
+.interval-time select{font-size:12px;padding:3px}
+.options{
+ grid-template-rows:24px 24px 24px 40px;
+ gap:3px;
+ padding:6px;
+}
+.connection-panel{
+ grid-template-rows:78px 48px 114px;
+}
+.connection-actions{
+ display:grid;
+ grid-template-columns:1fr;
+ grid-template-rows:repeat(3,34px);
+ gap:6px;
+}
+.connection-actions .secondary{
+ width:100%;
+ height:34px;
+ padding:0 10px;
+ text-align:left;
+ font-size:11px;
+ font-weight:700;
+}
+.side{
+ grid-template-rows:94px 108px 274px minmax(0,1fr);
+}
+
+/* Time editor sizing */
+.automation{
+ grid-template-columns:160px 145px 145px minmax(0,1fr);
+}
+.global-time-editor{
+ grid-template-columns:minmax(68px,1fr) 34px 54px;
+}
+.random-line .time-number,
+.random-line select{
+ height:44px;
+}
+.interval-time{
+ grid-template-columns:minmax(55px,1fr) 28px 46px;
+ gap:3px;
+ padding-left:0;
+}
+.interval-time .time-number{
+ min-width:55px;
+}
