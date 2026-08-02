@@ -22,16 +22,18 @@ The following release-candidate state has been confirmed:
 - SHA-256:
   `f7e7f848cc7c67181d3f7ac73f5abb816b72dacdd0afa2af39682b97c81c2946`.
 
+A named mapping of audio files to sound indexes 1 through 10 is not required for
+version 1.0.0. Users select and load their own audio files.
+
 ## Remaining work before merge
 
-1. Record the sound-file order for sound indexes 1 through 10.
-2. Perform the final English and German documentation review.
-3. Perform the final brand and logo exclusion review.
-4. Run `python scripts/validate.py` on the final branch.
-5. Run `python scripts/package_source.py`.
-6. Assemble the final release assets and checksum manifest.
-7. Change the draft pull request to `Ready for review`.
-8. Squash merge the pull request into `main`.
+1. Perform the final English and German documentation review.
+2. Perform the final brand and logo exclusion review.
+3. Run `python scripts/validate.py` on the final branch.
+4. Run `python scripts/package_source.py`.
+5. Assemble the final release assets and checksum manifest.
+6. Change the draft pull request to `Ready for review`.
+7. Squash merge the pull request into `main`.
 
 ## Tag and GitHub Release
 
