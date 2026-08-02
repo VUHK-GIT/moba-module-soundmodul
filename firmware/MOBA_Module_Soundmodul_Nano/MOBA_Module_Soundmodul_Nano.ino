@@ -27,14 +27,18 @@
  *
  * Wiring:
  *   JQ6500 TX   -> Nano D10
- *   Nano D11    -> 1 kOhm resistor -> JQ6500 RX
- *   JQ6500 BUSY -> Nano A2
- *   JQ6500 GND  -> Nano GND
+ *   Nano D11    -> R1 1 kOhm resistor -> JQ6500 RX
+ *   JQ6500 BUSY -> R2 1 kOhm resistor -> Nano A2
+ *   Nano 5V     -> JQ6500 DC-5V
+ *   Nano GND    -> JQ6500 GND and SGND
  *
  *   IN1..IN8 -> D2..D9
  *   IN9      -> A0
  *   IN10     -> A1
  *   Connect switches between an input and GND; INPUT_PULLUP is enabled.
+ *
+ * Audio files must be loaded into the JQ6500 internal flash separately over
+ * USB. Neither the firmware nor the desktop application uploads audio files.
  *
  * The MOBA-Module name and logo are not licensed under the MIT License.
  * See TRADEMARKS.md.
