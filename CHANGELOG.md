@@ -14,4 +14,8 @@ All notable changes are documented in this file.
 - automatic and manual COM-port connection;
 - PC-session timeout with standalone hardware-input fallback;
 - English source-code comments and bilingual documentation;
-- MIT source-code license with explicit brand-asset exclusion.
+- MIT source-code license with explicit brand-asset exclusion;
+- authoritative bilingual SVG wiring diagrams and net list;
+- second 1 kΩ resistor R2 between JQ6500 BUSY and Nano A2;
+- dedicated guide for loading the JQ6500 internal flash separately;
+- expanded release, hardware-test and publication process.
