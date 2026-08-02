@@ -44,9 +44,14 @@ The following status was confirmed on 2 August 2026:
 
 - Windows application built with PureBasic 6.40 for Windows x64;
 - generated release executable functionally tested on the Windows build system;
+- release executable also started and passed a functional test on a second Windows computer;
 - hardware setup with both separate resistors R1 and R2 functionally tested;
 - R1: Nano D11 -> 1 kΩ -> JQ6500 RX;
 - R2: JQ6500 BUSY -> 1 kΩ -> Nano A2;
+- BUSY raw values remained unchanged with R2 installed:
+  - idle: approximately 2 to 3 ADC counts;
+  - playback: approximately 537 to 540 ADC counts;
+- the existing thresholds remain confirmed: 150 for BUSY off and 350 for BUSY on;
 - verified release filename:
   `MOBA-Module-Soundmodul-1.0.0-Windows-x64.exe`;
 - file size: 457728 bytes;
@@ -61,9 +66,7 @@ The following status was confirmed on 2 August 2026:
 
 Still to be recorded before public release:
 
-- BUSY raw values while idle and playing with R2 installed;
-- sound-file order 1 through 10;
-- optional additional executable test on a second or clean Windows system.
+- sound-file order 1 through 10.
 
 ## General release evidence
 
