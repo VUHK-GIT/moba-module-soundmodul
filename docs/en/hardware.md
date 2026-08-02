@@ -70,11 +70,13 @@ application do not perform this write operation. See
 
 ## BUSY reference values
 
-Values measured on the previous target-hardware state:
+With the mandatory R2 1 kΩ series resistor installed, the following values were
+re-confirmed on 2 August 2026:
 
 - playing: approximately 537 to 540 ADC counts;
 - idle: approximately 2 to 3 ADC counts.
 
-Firmware thresholds are 350 for BUSY on and 150 for BUSY off, with 30 ms
-debouncing. R2 1 kΩ is now a mandatory part of the release wiring, so the final
-hardware test must re-confirm and record these values on the final assembly.
+The firmware thresholds therefore remain unchanged:
+
+- BUSY on: 350 ADC counts;
+- BUSY off: 150 ADC counts.
