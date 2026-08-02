@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -175,6 +176,55 @@ def check_javascript() -> None:
         run([node, "--check", str(script_path)])
 
 
+def check_wiring_documentation() -> None:
+    wiring = ROOT / "docs/assets/wiring"
+    required_files = [
+        wiring / "moba-module-soundmodul-wiring-de.svg",
+        wiring / "moba-module-soundmodul-wiring-en.svg",
+        wiring / "NETLIST.md",
+        wiring / "SOURCES.md",
+        ROOT / "docs/de/jq6500-sounds.md",
+        ROOT / "docs/en/jq6500-sounds.md",
+    ]
+    for path in required_files:
+        if not path.is_file():
+            fail(f"Required wiring or audio-loading document is missing: {path}")
+
+    for svg in required_files[:2]:
+        ET.parse(svg)
+        svg_text = svg.read_text(encoding="utf-8")
+        for token in [
+            "R1 1 kΩ",
+            "R2 1 kΩ",
+            "10 TX",
+            "9 RX",
+            "8 BUSY",
+            "D10",
+            "D11",
+            "A2",
+        ]:
+            if token not in svg_text:
+                fail(f"Wiring token missing in {svg}: {token}")
+
+    netlist = (wiring / "NETLIST.md").read_text(encoding="utf-8")
+    for token in [
+        "Nano D11 (SoftwareSerial TX)",
+        "R1 1 kΩ",
+        "JQ6500 pin 8 BUSY",
+        "Nano A2",
+        "R2 1 kΩ",
+    ]:
+        if token not in netlist:
+            fail(f"Authoritative net-list token is missing: {token}")
+
+    german = " ".join((ROOT / "docs/de/jq6500-sounds.md").read_text(encoding="utf-8").split())
+    english = " ".join((ROOT / "docs/en/jq6500-sounds.md").read_text(encoding="utf-8").split())
+    if "separat über seinen USB-Anschluss" not in german:
+        fail("German JQ6500 sound-loading requirement is missing")
+    if "separately through its USB interface" not in english:
+        fail("English JQ6500 sound-loading requirement is missing")
+
+
 def check_repository_hygiene() -> None:
     forbidden_suffixes = {".exe", ".msi", ".zip", ".sha256"}
     ignored_roots = {"dist", "build", "release", ".git"}
@@ -197,6 +247,7 @@ def main() -> int:
         check_firmware_syntax,
         check_ui_generation,
         check_javascript,
+        check_wiring_documentation,
         check_repository_hygiene,
     ]
     for check in checks:
