@@ -72,6 +72,11 @@ Detailed build instructions: [docs/en/build-windows.md](docs/en/build-windows.md
 Official Windows executables are published as assets on the corresponding
 GitHub Release. Executables are intentionally not committed to the source tree.
 
+The official version `1.0.0` is distributed as a Windows x64 executable. The
+initial executable is not digitally signed, so Windows SmartScreen may display
+a warning on systems where the file has no established reputation. The
+published SHA-256 checksum is provided for integrity verification.
+
 ## License
 
 The source code and documentation are licensed under the [MIT License](LICENSE).
@@ -84,6 +89,6 @@ Third-party notices are listed in
 
 ## Status
 
-Version 1.0.0 is the first stable release. The repository remains private until
-the release branch, documentation, Windows build and hardware tests have been
-reviewed.
+Version 1.0.0 was built with PureBasic 6.40 for Windows x64 and functionally
+tested on the project hardware with both R1 and R2 installed. The release branch
+remains private until the remaining publication checks are complete.
