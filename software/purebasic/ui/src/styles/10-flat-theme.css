@@ -1,0 +1,32 @@
+/* SPDX-License-Identifier: MIT
+ * Copyright (c) 2026 Sven Häber
+ */
+
+/* Flat industrial theme */
+html,body{background:#202326}
+body{background:#202326}
+.header,.panel{background:#2b2f32;border-color:#4c5358}
+.automation,.sound-card{background:#25292c;border-color:#555d62}
+.options{background:#222629;border-color:#464e53}
+.status-chip,.metric,.media-info,.queue-item{background:#202427;border-color:#4c5358}
+.play{background:#3f6f8d;color:#fff}
+.play:hover:not(:disabled){background:#4b7b98}
+.segment label:has(input:checked){background:#3f6f8d;color:#fff;border-color:#3f6f8d}
+.toggle{background:#4a5156;border:1px solid #646c71}
+.toggle:checked{background:#3f6f8d}
+.toggle:before{background:#d7dadd}
+.toggle:checked:before{background:#fff}
+.reset{background:#8f4444;color:#fff}
+.secondary,.icon-btn{background:#363c40;border-color:#5a6267;color:#eef0f1}
+.secondary:hover:not(:disabled),.icon-btn:hover:not(:disabled){background:#41484d}
+.sound-card.active{border-color:#a97832}
+.input-tile{background:#30363a;border-color:#4c5358}
+.input-tile.on{background:#55765e;color:#fff;border-color:#55765e}
+.run-badge{background:#55765e;color:#fff}
+.lock-badge{background:#a97832;color:#fff}
+.notice{background:#30363a;border-color:#5a6267}
+button:disabled,input:disabled,select:disabled{
+ background:#303539;
+ color:#858c91;
+ border-color:#454c51;
+}

@@ -1,0 +1,49 @@
+name: Bug report / Fehlerbericht
+description: Report a reproducible software or hardware issue.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component / Komponente
+      options:
+        - Arduino firmware
+        - Windows application
+        - JQ6500 / audio
+        - Hardware inputs
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: hardware
+    attributes:
+      label: Hardware and environment / Hardware und Umgebung
+      description: Include board, JQ6500 module, Windows and PureBasic versions where relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps / Schritte zur Reproduktion
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior / Erwartetes Verhalten
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior / Tatsächliches Verhalten
+    validations:
+      required: true

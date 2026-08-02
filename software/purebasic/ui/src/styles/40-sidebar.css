@@ -1,0 +1,267 @@
+/* SPDX-License-Identifier: MIT
+ * Copyright (c) 2026 Sven Häber
+ */
+
+/* Large structured sidebar */
+html,body{
+ min-height:820px;
+}
+.workspace{
+ grid-template-columns:minmax(0,1fr) 370px;
+}
+.side{
+ grid-template-rows:90px 150px 350px 96px;
+ gap:8px;
+}
+.side .panel{
+ font-size:13px;
+}
+.section-label{
+ color:var(--muted);
+ font-size:11px;
+ font-weight:700;
+ letter-spacing:.03em;
+}
+.now-panel{
+ padding:10px 13px;
+ grid-template-columns:minmax(0,1fr) 100px;
+ gap:12px;
+}
+.now-panel h3{
+ font-size:29px;
+ line-height:1;
+ margin:6px 0 5px;
+ letter-spacing:-.02em;
+}
+.now-panel .detail{
+ font-size:12px;
+ line-height:1.25;
+}
+.queue-counter{
+ font-size:31px;
+ line-height:1;
+ padding-left:11px;
+ border-left:1px solid var(--line);
+}
+.queue-counter small{
+ margin-top:7px;
+ font-size:10px;
+ line-height:1.15;
+ letter-spacing:0;
+ text-transform:none;
+}
+
+.controls-panel{
+ padding:10px 12px;
+ grid-template-rows:30px 42px 46px;
+ gap:6px;
+}
+.panel-heading{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ min-width:0;
+}
+.panel-heading strong{
+ display:block;
+ font-size:14px;
+ line-height:1.15;
+}
+.panel-heading small{
+ display:block;
+ margin-top:2px;
+ color:var(--muted);
+ font-size:10px;
+ line-height:1.15;
+ font-weight:400;
+}
+.volume-value{
+ min-width:42px;
+ text-align:right;
+ font-size:27px;
+ font-weight:800;
+ color:#78a7c3;
+}
+.volume-row{
+ grid-template-columns:42px minmax(0,1fr) 42px;
+ gap:9px;
+}
+.icon-btn{
+ height:42px;
+ font-size:22px;
+ font-weight:700;
+}
+.volume-row input[type=range]{
+ height:42px;
+}
+.reset-large{
+ height:46px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ gap:2px;
+ padding:4px 10px;
+ text-align:center;
+}
+.reset-large span{
+ display:block;
+ font-size:12px;
+ line-height:1.1;
+ font-weight:800;
+}
+.reset-large small{
+ display:block;
+ font-size:9px;
+ line-height:1.15;
+ font-weight:500;
+}
+
+.connection-panel{
+ padding:10px 12px;
+ display:grid;
+ grid-template-rows:26px 64px 40px 46px 114px;
+ gap:6px;
+}
+.device-heading{
+ border-bottom:1px solid var(--line);
+ padding-bottom:5px;
+}
+.metrics{
+ grid-template-columns:1fr 1fr;
+ grid-template-rows:30px 30px;
+ gap:4px;
+}
+.metric{
+ padding:4px 8px;
+}
+.metric span{
+ font-size:9px;
+ line-height:1;
+ letter-spacing:.01em;
+ text-transform:none;
+}
+.metric strong{
+ margin-top:3px;
+ font-size:12px;
+ line-height:1;
+}
+.media-info{
+ padding:6px 8px;
+}
+.media-info strong{
+ font-size:11px;
+ line-height:1.1;
+}
+.media-info span{
+ margin-top:3px;
+ font-size:9px;
+ line-height:1.2;
+}
+.manual-connect{
+ display:block;
+ min-width:0;
+}
+.manual-connect>label{
+ display:block;
+ margin-bottom:4px;
+ color:var(--muted);
+ font-size:10px;
+ font-weight:700;
+}
+.connect-row{
+ display:grid;
+ grid-template-columns:minmax(0,1fr) 108px;
+ gap:7px;
+}
+.connect-row select,
+.connect-row .primary-connect{
+ height:32px;
+ font-size:12px;
+}
+.connect-row select{
+ padding:3px 8px;
+}
+.connect-row .primary-connect{
+ text-align:center;
+ font-weight:800;
+}
+.connection-actions{
+ display:grid;
+ grid-template-columns:1fr;
+ grid-template-rows:repeat(3,34px);
+ gap:6px;
+}
+.connection-actions .action-button{
+ height:34px;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:flex-start;
+ padding:3px 9px;
+ text-align:left;
+ line-height:1.05;
+ overflow:hidden;
+}
+.action-button span{
+ display:block;
+ width:100%;
+ font-size:11px;
+ font-weight:800;
+ white-space:nowrap;
+ overflow:hidden;
+ text-overflow:ellipsis;
+}
+.action-button small{
+ display:block;
+ width:100%;
+ margin-top:2px;
+ color:var(--muted);
+ font-size:8px;
+ font-weight:400;
+ white-space:nowrap;
+ overflow:hidden;
+ text-overflow:ellipsis;
+}
+
+.queue-panel{
+ padding:9px 12px;
+ grid-template-rows:30px minmax(0,1fr) 24px;
+ gap:6px;
+}
+.queue-head{
+ align-items:flex-start;
+}
+.queue-head strong{
+ display:block;
+ font-size:13px;
+ line-height:1.1;
+}
+.queue-head small{
+ display:block;
+ margin-top:3px;
+ color:var(--muted);
+ font-size:9px;
+ font-weight:400;
+ line-height:1.1;
+}
+.queue-head>span{
+ padding-top:2px;
+ font-size:9px;
+}
+.queue-grid{
+ grid-auto-rows:27px;
+ gap:4px;
+}
+.queue-item{
+ padding:4px 7px;
+ font-size:10px;
+}
+.empty{
+ padding:7px 0;
+ font-size:11px;
+}
+.input-tile{
+ font-size:8px;
+ padding:4px 0;
+}

@@ -1,0 +1,159 @@
+<!-- SPDX-License-Identifier: MIT | Copyright (c) 2026 Sven Häber -->
+<div class="app">
+<header class="header">
+  <div class="brand">
+    {{BRAND_MARKUP}}
+    <h1>MOBA-Module-Soundmodul</h1>
+  </div>
+  <div id="statusChip" class="status-chip">
+    <div class="dot"></div>
+    <div><strong id="connectionTitle">Soundmodul wird gesucht</strong><span id="connectionSub">COM-Anschlüsse werden geprüft</span></div>
+  </div>
+</header>
+
+<div class="workspace">
+  <section class="panel left-panel">
+    <section class="automation">
+      <div class="auto-title">
+        <strong>Automatiksteuerung</strong>
+        <span>Ohne aktive PC-Sitzung arbeitet der Nano automatisch über IN1 bis IN10.</span>
+      </div>
+
+      <div>
+        <span class="group-label">Betriebsart mit PC</span>
+        <div class="segment">
+          <label><input id="modeSoftware" type="radio" name="mode" value="SOFTWARE">Software</label>
+          <label><input id="modeInputs" type="radio" name="mode" value="INPUTS">Eingänge</label>
+        </div>
+      </div>
+
+      <label class="auto-switch">
+        <input id="automation" class="toggle" type="checkbox">
+        <span><strong>Automatik aktiv</strong><small>Dauer, Zufall und Intervalle</small></span>
+      </label>
+
+      <div class="random-box">
+        <span class="group-label">Globaler Zufallsabstand</span>
+        <div class="random-line">
+          <label class="global-time-block">
+            <span>Minimum</span>
+            <span class="time-editor global-time-editor">
+              <input id="randomMin" class="time-number" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="Zufallsminimum">
+              <span class="step-stack">
+                <button id="randomMinUp" class="time-step" type="button" aria-label="Zufallsminimum erhöhen">▲</button>
+                <button id="randomMinDown" class="time-step" type="button" aria-label="Zufallsminimum verringern">▼</button>
+              </span>
+              <select id="randomMinUnit" aria-label="Einheit Zufallsminimum"><option value="s">Sekunden</option><option value="m">Minuten</option></select>
+            </span>
+          </label>
+          <span class="random-separator">bis</span>
+          <label class="global-time-block">
+            <span>Maximum</span>
+            <span class="time-editor global-time-editor">
+              <input id="randomMax" class="time-number" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="Zufallsmaximum">
+              <span class="step-stack">
+                <button id="randomMaxUp" class="time-step" type="button" aria-label="Zufallsmaximum erhöhen">▲</button>
+                <button id="randomMaxDown" class="time-step" type="button" aria-label="Zufallsmaximum verringern">▼</button>
+              </span>
+              <select id="randomMaxUnit" aria-label="Einheit Zufallsmaximum"><option value="s">Sekunden</option><option value="m">Minuten</option></select>
+            </span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <div id="soundGrid" class="sound-grid"></div>
+  </section>
+
+  <aside class="side">
+    <section class="panel now-panel">
+      <div class="now-main">
+        <div class="section-label">Wiedergabe</div>
+        <h3 id="nowState">OFFLINE</h3>
+        <div id="nowDetail" class="detail">Noch keine Verbindung.</div>
+      </div>
+      <div class="queue-counter">
+        <span id="queueCount">0</span>
+        <small>Sounds wartend</small>
+      </div>
+    </section>
+
+    <section class="panel controls-panel">
+      <div class="panel-heading">
+        <div>
+          <strong>Lautstärke</strong>
+          <small>Ausgangspegel des JQ6500</small>
+        </div>
+        <span id="volumeValue" class="volume-value">15</span>
+      </div>
+      <div class="volume-row">
+        <button id="volumeMinus" class="icon-btn" type="button" aria-label="Lautstärke verringern">−</button>
+        <input id="volumeSlider" type="range" min="0" max="30" value="15" aria-label="Lautstärke">
+        <button id="volumePlus" class="icon-btn" type="button" aria-label="Lautstärke erhöhen">+</button>
+      </div>
+      <button id="resetButton" class="reset reset-large" type="button">
+        <span>Wiedergabe zurücksetzen</span>
+        <small>Sound stoppen · Warteschlange leeren · Automatik ausschalten</small>
+      </button>
+    </section>
+
+    <section class="panel connection-panel">
+      <div class="panel-heading device-heading">
+        <div>
+          <strong>Verbindung und Gerät</strong>
+          <small>Nano, JQ6500 und Diagnose</small>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><span>COM-Port</span><strong id="portValue">–</strong></div>
+        <div class="metric"><span>Firmware</span><strong id="firmwareValue">–</strong></div>
+        <div class="metric"><span>BUSY-Signal</span><strong id="busyValue">–</strong></div>
+        <div class="metric"><span>Aktueller Auslöser</span><strong id="triggerValue">–</strong></div>
+      </div>
+
+      <div class="media-info">
+        <strong id="mediaTitle">JQ6500-Dateien: nicht geprüft</strong>
+        <span id="mediaText">Die Dateianzahl ist eine Diagnose. Dateinamen können aus dem internen Speicher nicht ausgelesen werden.</span>
+      </div>
+
+      <div class="manual-connect">
+        <label for="portSelect">COM-Port auswählen</label>
+        <div class="connect-row">
+          <select id="portSelect" aria-label="COM-Port auswählen"></select>
+          <button id="connectButton" class="secondary primary-connect" type="button">Verbinden</button>
+        </div>
+      </div>
+
+      <div class="connection-actions">
+        <button id="searchButton" class="secondary action-button" type="button">
+          <span>COM-Ports neu suchen</span>
+          <small>Alle vorhandenen Anschlüsse prüfen</small>
+        </button>
+        <button id="reloadButton" class="secondary action-button" type="button">
+          <span>Einstellungen vom Nano aktualisieren</span>
+          <small>Gespeicherte Einstellungen erneut anzeigen</small>
+        </button>
+        <button id="mediaButton" class="secondary action-button" type="button">
+          <span>JQ6500-Dateien prüfen</span>
+          <small>Anzahl der internen Sounddateien abfragen</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="panel queue-panel">
+      <div class="queue-head">
+        <div>
+          <strong>Warteschlange</strong>
+          <small>Sounds werden nacheinander abgespielt</small>
+        </div>
+        <span>FIFO · keine Duplikate</span>
+      </div>
+      <div id="queueGrid" class="queue-grid"></div>
+      <div id="inputStrip" class="input-strip"></div>
+    </section>
+  </aside>
+</div>
+</div>
+
+<div id="notice" class="notice"><strong id="noticeTitle">Status</strong><span id="noticeText"></span></div>

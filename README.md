@@ -28,7 +28,7 @@ application provides configuration, manual playback and diagnostics.
 ```text
 firmware/                 Arduino Nano firmware
 software/purebasic/       Windows desktop application source
-software/purebasic/ui/    Embedded German HTML/CSS/JavaScript interface
+software/purebasic/ui/    German UI template and modular CSS/JavaScript sources
 docs/en/                  English documentation
 docs/de/                  German documentation
 scripts/                  Validation and packaging tools
@@ -42,7 +42,8 @@ tests/firmware_host/      Host-side Arduino compatibility stubs
 2. Install the upstream `JQ6500_Serial` Arduino library.
 3. Upload
    `firmware/MOBA_Module_Soundmodul_Nano/MOBA_Module_Soundmodul_Nano.ino`.
-4. Optionally run `python scripts/prepare_ui.py` after adding the official logo locally.
+4. Run `python scripts/prepare_ui.py` to assemble the embedded interface.
+   Add the official logo locally before this step only for an authorized branded build.
 5. Build the Windows application with PureBasic 6.10 LTS or newer by opening
    `software/purebasic/MOBA_Module_Soundmodul.pb`.
 6. Start the application. It scans available COM ports automatically.
