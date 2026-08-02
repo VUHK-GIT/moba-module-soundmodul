@@ -33,7 +33,9 @@ the sound indexes: the first file is sound 1, the second file is sound 2, and so
 on.
 
 The repository does not distribute audio files or a proprietary JQ6500 uploader.
-See [docs/en/jq6500-sounds.md](docs/en/jq6500-sounds.md).
+A named mapping of files to sound indexes 1 through 10 is not required for the
+release; users select and manage their own audio files. See
+[docs/en/jq6500-sounds.md](docs/en/jq6500-sounds.md).
 
 ## Repository layout
 
@@ -50,8 +52,7 @@ tests/firmware_host/      Host-side Arduino compatibility stubs
 
 ## Quick start
 
-1. Load the required sounds into the JQ6500-16P separately over USB. Record the
-   file order as the sound 1 through sound 10 mapping.
+1. Load the required sounds into the JQ6500-16P separately over USB.
 2. Wire the Arduino Nano, JQ6500-16P and the ten inputs as described in
    [docs/en/hardware.md](docs/en/hardware.md). Two separate 1 kΩ resistors are
    required: R1 in the RX line and R2 in the BUSY-to-A2 line.
