@@ -1,22 +1,47 @@
 # Hardware und Verdrahtung
 
+## Verbindlicher Verdrahtungsplan
+
+![Verdrahtungsplan Arduino Nano und JQ6500-16P](../assets/wiring/moba-module-soundmodul-wiring-de.svg)
+
+Die bearbeitbare SVG-Datei und die verbindliche Netzliste liegen unter
+[`docs/assets/wiring/`](../assets/wiring/README.md).
+
 ## Benötigte Komponenten
 
 - Arduino Nano mit ATmega328P;
 - JQ6500-16P mit internem Flash-Speicher;
-- ein Widerstand 1 kOhm in der Leitung vom Nano zum JQ6500-RX;
-- geeigneter Lautsprecher;
+- **zwei getrennte Widerstände mit jeweils 1 kΩ**:
+  - R1 in der Leitung Nano D11 zum JQ6500-RX;
+  - R2 in der Leitung JQ6500-BUSY zu Nano A2;
+- geeigneter Lautsprecher, empfohlen 8 Ω und 1 bis 3 W;
 - bis zu zehn Schalter oder externe Open-Collector-Kontakte;
-- gemeinsame Masse zwischen Nano, JQ6500 und externen Eingängen.
+- ausreichend dimensionierte, stabilisierte 5-V-Versorgung;
+- gemeinsame Masse zwischen Nano, JQ6500, Versorgung und externen Eingängen;
+- empfohlen: C1 470 µF / 10 V und C2 100 nF möglichst nahe am JQ6500.
 
 ## JQ6500-Verbindung
 
 ```text
-JQ6500 TX   -> Nano D10
-Nano D11    -> 1 kOhm -> JQ6500 RX
-JQ6500 BUSY -> Nano A2
-JQ6500 GND  -> Nano GND
+JQ6500 Pin 10 TX    -> Nano D10
+Nano D11            -> R1 1 kΩ -> JQ6500 Pin 9 RX
+JQ6500 Pin 8 BUSY   -> R2 1 kΩ -> Nano A2
+Nano 5V             -> JQ6500 Pin 12 DC-5V
+Nano GND            -> JQ6500 Pin 11 GND
+Nano GND            -> JQ6500 Pin 6 SGND
+JQ6500 Pin 16 SPK+  -> Lautsprecher +
+JQ6500 Pin 15 SPK-  -> Lautsprecher -
 ```
+
+R1 und R2 sind zwei eigenständige Bauteile. Sie dürfen nicht durch einen
+gemeinsamen Widerstand ersetzt werden.
+
+`SPK+` und `SPK-` sind ein Brückenausgang. Keinen der beiden
+Lautsprecheranschlüsse mit GND verbinden.
+
+Nano und JQ6500 dürfen nicht gleichzeitig aus zwei parallel verbundenen
+5-V-Quellen gespeist werden. Bei USB-Verbindung und externer Versorgung die
+Versorgungssituation vorher eindeutig festlegen.
 
 ## Hardwareeingänge
 
@@ -39,12 +64,21 @@ wird.
 
 A3 bleibt unbeschaltet und dient als zusätzliche Zufallsquelle.
 
-## Bestätigte BUSY-Werte
+## JQ6500 vorab mit Sounds bespielen
 
-Auf der Zielhardware gemessene Werte:
+Der JQ6500 muss vor der Nutzung separat über USB mit den gewünschten
+Sounddateien befüllt werden. Die Firmware und die Windows-Anwendung übernehmen
+diesen Schreibvorgang nicht. Anleitung:
+[docs/de/jq6500-sounds.md](jq6500-sounds.md).
+
+## BUSY-Referenzwerte
+
+Auf der bisherigen Zielhardware gemessene Werte:
 
 - Wiedergabe: ungefähr 537 bis 540 ADC-Schritte;
 - Leerlauf: ungefähr 2 bis 3 ADC-Schritte.
 
 Die Firmware verwendet 350 als Einschalt- und 150 als Ausschaltschwelle sowie
-30 ms Entprellung.
+30 ms Entprellung. Da R2 mit 1 kΩ nun verbindlicher Bestandteil der
+Releaseverdrahtung ist, müssen diese Werte beim abschließenden Hardwaretest mit
+der finalen Platine erneut bestätigt und dokumentiert werden.
