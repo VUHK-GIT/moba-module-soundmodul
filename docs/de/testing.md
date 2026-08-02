@@ -38,7 +38,34 @@ Vor einer Veröffentlichung prüfen und das Ergebnis im Pull Request festhalten:
 13. Reset-Verhalten und mögliches Lautsprecherknacken;
 14. erneuter Start nach vollständiger Trennung von Nano und JQ6500.
 
-## Freigabenachweis
+## Freigabenachweis für den Releasekandidaten
+
+Am 2. August 2026 wurde folgender Stand bestätigt:
+
+- Windows-Anwendung mit PureBasic 6.40 für Windows x64 erstellt;
+- erzeugte Release-EXE lokal unter Windows funktional geprüft;
+- Hardwareaufbau mit den beiden getrennten Widerständen R1 und R2 erfolgreich geprüft;
+- R1: Nano D11 -> 1 kΩ -> JQ6500 RX;
+- R2: JQ6500 BUSY -> 1 kΩ -> Nano A2;
+- Dateiname der geprüften Release-Datei:
+  `MOBA-Module-Soundmodul-1.0.0-Windows-x64.exe`;
+- Dateigröße: 457728 Byte;
+- SHA-256:
+  `f7e7f848cc7c67181d3f7ac73f5abb816b72dacdd0afa2af39682b97c81c2946`;
+- eingebettete Datei- und Produktversion: `1.0.0.0`;
+- x64-Windows-GUI, DPI-Awareness, Ausführung als normaler Benutzer, ASLR und
+  DEP/NX wurden statisch in der EXE bestätigt;
+- Icon, Versionsressource und Anwendungsmanifest sind eingebettet;
+- die Release-EXE ist nicht digital signiert. Windows SmartScreen kann deshalb
+  auf Systemen ohne bestehende Dateireputation eine Warnung anzeigen.
+
+Noch vor der öffentlichen Freigabe zu dokumentieren:
+
+- gemessene BUSY-Rohwerte im Leerlauf und während der Wiedergabe mit R2;
+- verwendete Sounddatei-Reihenfolge 1 bis 10;
+- optionaler zusätzlicher EXE-Test auf einem zweiten oder sauberen Windows-System.
+
+## Allgemeiner Freigabenachweis
 
 Für die Version 1.0.0 mindestens dokumentieren:
 
