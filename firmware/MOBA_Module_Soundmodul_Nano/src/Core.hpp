@@ -8,9 +8,9 @@ constexpr uint8_t CONFIG_VERSION = 2;
 constexpr uint32_t PC_BAUD = 115200UL;
 constexpr uint32_t JQ_BAUD = 9600UL;
 
-constexpr uint8_t JQ_RX_PIN = 10;
-constexpr uint8_t JQ_TX_PIN = 11;
-constexpr uint8_t JQ_BUSY_PIN = A2;
+constexpr uint8_t JQ_RX_PIN = 10;  // JQ6500 TX -> Nano RX.
+constexpr uint8_t JQ_TX_PIN = 11;  // Nano TX -> external R1 1 kOhm -> JQ6500 RX.
+constexpr uint8_t JQ_BUSY_PIN = A2;  // JQ6500 BUSY -> external R2 1 kOhm -> A2.
 constexpr uint8_t RANDOM_SEED_PIN = A3;
 
 constexpr uint8_t SOUND_COUNT = 10;
