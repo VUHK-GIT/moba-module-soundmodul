@@ -44,9 +44,14 @@ Am 2. August 2026 wurde folgender Stand bestätigt:
 
 - Windows-Anwendung mit PureBasic 6.40 für Windows x64 erstellt;
 - erzeugte Release-EXE lokal unter Windows funktional geprüft;
+- Release-EXE zusätzlich auf einem zweiten Windows-Rechner erfolgreich gestartet und funktional geprüft;
 - Hardwareaufbau mit den beiden getrennten Widerständen R1 und R2 erfolgreich geprüft;
 - R1: Nano D11 -> 1 kΩ -> JQ6500 RX;
 - R2: JQ6500 BUSY -> 1 kΩ -> Nano A2;
+- die BUSY-Rohwerte blieben mit eingebautem R2 unverändert:
+  - Leerlauf: ungefähr 2 bis 3 ADC-Schritte;
+  - Wiedergabe: ungefähr 537 bis 540 ADC-Schritte;
+- die bestehenden Schaltschwellen 150 für BUSY-aus und 350 für BUSY-ein bleiben bestätigt;
 - Dateiname der geprüften Release-Datei:
   `MOBA-Module-Soundmodul-1.0.0-Windows-x64.exe`;
 - Dateigröße: 457728 Byte;
@@ -61,9 +66,7 @@ Am 2. August 2026 wurde folgender Stand bestätigt:
 
 Noch vor der öffentlichen Freigabe zu dokumentieren:
 
-- gemessene BUSY-Rohwerte im Leerlauf und während der Wiedergabe mit R2;
-- verwendete Sounddatei-Reihenfolge 1 bis 10;
-- optionaler zusätzlicher EXE-Test auf einem zweiten oder sauberen Windows-System.
+- verwendete Sounddatei-Reihenfolge 1 bis 10.
 
 ## Allgemeiner Freigabenachweis
 
