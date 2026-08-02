@@ -29,29 +29,29 @@ Sounddateien selbst.
 
 ## Noch vor dem Merge
 
-1. Deutsche und englische Dokumentation abschließend lesen.
-2. Marken- und Logoausnahme abschließend prüfen.
-3. `python scripts/validate.py` auf dem finalen Branch ausführen.
-4. `python scripts/package_source.py` ausführen.
-5. Finale Release-Dateien und Prüfsummen zusammenstellen.
-6. Draft-Pull-Request auf `Ready for review` setzen.
-7. Pull Request per `Squash and merge` nach `main` übernehmen.
+1. Draft-Pull-Request auf `Ready for review` setzen.
+2. Pull Request per `Squash and merge` nach `main` übernehmen.
 
 ## Tag und GitHub-Release
 
 Nach dem Merge:
 
-1. annotierten Tag `v1.0.0` auf dem neuen `main`-Commit erstellen;
-2. GitHub-Release zunächst als Draft anlegen;
+1. auf GitHub ein neues Release anlegen und dabei den Tag `v1.0.0` auf dem
+   neuen `main`-Commit erstellen;
+2. Release zunächst als Draft speichern;
 3. folgende Dateien hochladen:
 
 ```text
 MOBA-Module-Soundmodul-1.0.0-Windows-x64.exe
-MOBA-Module-Soundmodul-1.0.0-source.zip
 moba-module-soundmodul-wiring-de.png
 moba-module-soundmodul-wiring-en.png
 SHA256SUMS.txt
 ```
+
+GitHub stellt für den Tag automatisch Quellcodearchive als ZIP und TAR.GZ bereit.
+Ein zusätzlich manuell erzeugtes Quellcode-ZIP ist für die Veröffentlichung
+nicht erforderlich. `scripts/package_source.py` bleibt als optionales Werkzeug
+für lokale, reproduzierbare Pakete erhalten.
 
 4. Releasebeschreibung und Prüfsummen kontrollieren;
 5. Release veröffentlichen;
