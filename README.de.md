@@ -34,7 +34,9 @@ geschrieben werden. Die Reihenfolge beim Übertragen legt die Soundindizes fest:
 die erste Datei ist Sound 1, die zweite Datei Sound 2 usw.
 
 Das Repository enthält aus Lizenz- und Größengründen keine Sounddateien und
-keinen proprietären JQ6500-Uploader. Siehe
+keinen proprietären JQ6500-Uploader. Eine namentliche Zuordnung von Dateien zu
+den Soundindizes 1 bis 10 ist keine Voraussetzung für die Veröffentlichung;
+Anwender wählen und verwalten ihre Sounddateien selbst. Siehe
 [docs/de/jq6500-sounds.md](docs/de/jq6500-sounds.md).
 
 ## Verzeichnisstruktur
@@ -52,8 +54,7 @@ tests/firmware_host/      Arduino-Kompatibilitätsstubs für den Hosttest
 
 ## Schnellstart
 
-1. Den JQ6500-16P separat per USB mit den gewünschten Sounds bespielen. Die
-   Dateireihenfolge als Zuordnung Sound 1 bis Sound 10 dokumentieren.
+1. Den JQ6500-16P separat per USB mit den gewünschten Sounds bespielen.
 2. Arduino Nano, JQ6500-16P und die zehn Eingänge nach
    [docs/de/hardware.md](docs/de/hardware.md) verdrahten. Dabei sind **zwei
    getrennte 1-kΩ-Widerstände** erforderlich: R1 in der RX-Leitung und R2 in
