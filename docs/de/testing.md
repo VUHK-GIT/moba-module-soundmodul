@@ -23,20 +23,24 @@ Das Skript prüft:
 
 Vor einer Veröffentlichung prüfen und das Ergebnis im Pull Request festhalten:
 
-1. JQ6500 separat mit einer dokumentierten Testdatei-Reihenfolge bespielen;
+1. JQ6500 separat mit geeigneten Test-Sounddateien bespielen;
 2. Sichtprüfung: R1 1 kΩ zwischen D11 und RX sowie R2 1 kΩ zwischen BUSY und A2;
 3. Versorgung, gemeinsame Masse, SGND und Lautsprecheranschlüsse prüfen;
-4. manuelle Wiedergabe der Soundindizes 1, 2 und 3;
+4. manuelle Wiedergabe mehrerer vorhandener Soundindizes;
 5. Lautstärkeregelung;
-6. BUSY-Rohwerte mit eingebautem R2 erneut messen und Schwellen bestätigen;
+6. BUSY-Rohwerte mit eingebautem R2 messen und Schwellen bestätigen;
 7. BUSY-Wechsel und natürliches Wiedergabeende;
 8. FIFO-Wiedergabe eines währenddessen eingereihten zweiten Sounds;
-9. alle zehn Hardwareeingänge mit Sound 1 bis 10;
+9. angeschlossene Hardwareeingänge prüfen;
 10. normales Schließen der Anwendung und Standalone-Rückfall;
 11. USB-Trennung oder Programmabsturz und Rückfall nach ungefähr vier Sekunden;
 12. COM-Port-Wechsel und automatische Wiederverbindung;
 13. Reset-Verhalten und mögliches Lautsprecherknacken;
 14. erneuter Start nach vollständiger Trennung von Nano und JQ6500.
+
+Eine namentliche Zuordnung von Sounddateien zu den Soundindizes 1 bis 10 ist
+keine Voraussetzung für die Veröffentlichung. Die Sounddateien werden vom
+Anwender selbst ausgewählt und separat auf den JQ6500 übertragen.
 
 ## Freigabenachweis für den Releasekandidaten
 
@@ -64,10 +68,6 @@ Am 2. August 2026 wurde folgender Stand bestätigt:
 - die Release-EXE ist nicht digital signiert. Windows SmartScreen kann deshalb
   auf Systemen ohne bestehende Dateireputation eine Warnung anzeigen.
 
-Noch vor der öffentlichen Freigabe zu dokumentieren:
-
-- verwendete Sounddatei-Reihenfolge 1 bis 10.
-
 ## Allgemeiner Freigabenachweis
 
 Für die Version 1.0.0 mindestens dokumentieren:
@@ -75,7 +75,6 @@ Für die Version 1.0.0 mindestens dokumentieren:
 - Datum und Tester;
 - verwendete Nano- und JQ6500-Variante;
 - Prüfsumme der getesteten Firmware und EXE;
-- Sounddatei-Reihenfolge 1 bis 10;
 - gemessene BUSY-Werte im Leerlauf und während Wiedergabe;
 - Ergebnis jedes Prüfpunkts;
 - bekannte Einschränkungen.
