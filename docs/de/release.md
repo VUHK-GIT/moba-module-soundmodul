@@ -1,61 +1,65 @@
-# Veröffentlichungsablauf 1.0.0
+# Veröffentlichung von Version 1.0.0
 
-## Phase 1 – Release Candidate auf dem privaten Repository
+## Grundsatz
 
-1. Branch `release/1.0.0-open-source` auf den letzten Stand bringen.
-2. `python scripts/validate.py` ausführen und GitHub Actions abwarten.
-3. JQ6500 mit einer dokumentierten Reihenfolge Sound 1 bis 10 bespielen.
-4. Hardware einschließlich R1 und R2 nach `docs/de/hardware.md` aufbauen.
-5. Hardwaretests aus `docs/de/testing.md` vollständig durchführen.
-6. Windows-x64-EXE mit PureBasic erstellen.
-7. EXE auf einem zweiten Windows-System beziehungsweise einer sauberen
-   Benutzerumgebung starten und COM-Verbindung sowie WebView2 prüfen.
-8. `python scripts/package_source.py` ausführen.
-9. SHA-256 für EXE, Quellcode-ZIP und weitere Release-Dateien erzeugen.
-10. Ergebnisse und bekannte Einschränkungen im Draft-Pull-Request dokumentieren.
+Die Veröffentlichung erfolgt kontrolliert aus dem Branch
+`release/1.0.0-open-source`. Das Repository bleibt bis zur finalen Abnahme
+privat. Binärdateien, Sounddateien und geschützte Markenassets werden nicht in
+den Quellcode-Branch eingecheckt.
 
-## Phase 2 – Pull Request freigeben
+## Bestätigter Releasekandidat
 
-1. Alle offenen Prüfpunkte im Draft-Pull-Request kontrollieren.
-2. Keine EXE, kein proprietäres Logo und keine Sounddateien im Quell-Branch.
-3. Pull Request von `Draft` auf `Ready for review` setzen.
-4. Diff und Dateiliste abschließend prüfen.
-5. Pull Request vorzugsweise per **Squash merge** nach `main` übernehmen, damit
-   die erste öffentliche Version einen klaren Release-Commit erhält.
+Für den Releasekandidaten wurde bestätigt:
 
-## Phase 3 – Tag und GitHub-Release
+- PureBasic 6.40, Windows x64;
+- Hardwaretest mit R1 und R2 jeweils 1 kΩ bestanden;
+- BUSY-Werte mit R2 unverändert und bestätigt:
+  - Leerlauf ungefähr 2 bis 3 ADC-Schritte;
+  - Wiedergabe ungefähr 537 bis 540 ADC-Schritte;
+- EXE lokal auf dem Build-System getestet;
+- EXE zusätzlich auf einem zweiten Windows-Rechner erfolgreich getestet;
+- geprüfte EXE:
+  `MOBA-Module-Soundmodul-1.0.0-Windows-x64.exe`;
+- SHA-256:
+  `f7e7f848cc7c67181d3f7ac73f5abb816b72dacdd0afa2af39682b97c81c2946`.
 
-1. Auf dem geprüften Merge-Commit den signierten oder annotierten Tag `v1.0.0`
-   anlegen.
-2. GitHub-Release zunächst als Draft erstellen.
-3. Folgende Dateien hochladen:
+## Noch vor dem Merge
 
-   ```text
-   MOBA-Module-Soundmodul-1.0.0-Windows-x64.exe
-   MOBA-Module-Soundmodul-1.0.0-source.zip
-   moba-module-soundmodul-wiring-de.png
-   moba-module-soundmodul-wiring-en.png
-   SHA256SUMS.txt
-   ```
+1. Reihenfolge der verwendeten Sounddateien 1 bis 10 dokumentieren.
+2. Deutsche und englische Dokumentation abschließend lesen.
+3. Marken- und Logoausnahme abschließend prüfen.
+4. `python scripts/validate.py` auf dem finalen Branch ausführen.
+5. `python scripts/package_source.py` ausführen.
+6. Finale Release-Dateien und Prüfsummen zusammenstellen.
+7. Draft-Pull-Request auf `Ready for review` setzen.
+8. Pull Request per `Squash and merge` nach `main` übernehmen.
 
-4. Release-Text aus `CHANGELOG.de.md` und `CHANGELOG.md` erstellen.
-5. Prüfsummen herunterladen und unabhängig kontrollieren.
-6. GitHub-Release veröffentlichen.
+## Tag und GitHub-Release
 
-## Phase 4 – Repository öffentlich machen
+Nach dem Merge:
 
-Erst nach veröffentlichtem Release:
+1. annotierten Tag `v1.0.0` auf dem neuen `main`-Commit erstellen;
+2. GitHub-Release zunächst als Draft anlegen;
+3. folgende Dateien hochladen:
 
-1. Repository-Einstellungen öffnen.
-2. Unter `Settings → General → Danger Zone → Change repository visibility`
-   das Repository von `Private` auf `Public` umstellen.
-3. Den von GitHub geforderten Repository-Namen zur Bestätigung eingeben.
-4. Danach ohne Anmeldung prüfen:
-   - README und Lizenz sichtbar;
-   - Release `v1.0.0` erreichbar;
-   - EXE und Prüfsummen herunterladbar;
-   - Verdrahtungs-SVGs werden dargestellt;
-   - Issues und Security-Hinweise funktionieren;
-   - geschützte Markenassets wurden nicht versehentlich veröffentlicht.
+```text
+MOBA-Module-Soundmodul-1.0.0-Windows-x64.exe
+MOBA-Module-Soundmodul-1.0.0-source.zip
+moba-module-soundmodul-wiring-de.png
+moba-module-soundmodul-wiring-en.png
+SHA256SUMS.txt
+```
 
-Die EXE gehört in das GitHub-Release und nicht in die Git-Historie.
+4. Releasebeschreibung und Prüfsummen kontrollieren;
+5. Release veröffentlichen;
+6. Repository erst danach auf öffentlich umstellen;
+7. abgemeldet prüfen, ob README, Lizenz, Dokumentation und Downloads korrekt
+   erreichbar sind.
+
+## Nicht in Git einchecken
+
+- Windows-EXE;
+- ZIP-Releasepakete;
+- MP3- oder WAV-Dateien;
+- proprietäre Uploader;
+- offizielles MOBA-Module-Logo oder Icon als frei nutzbares Einzelasset.
