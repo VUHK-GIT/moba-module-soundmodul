@@ -27,29 +27,28 @@ version 1.0.0. Users select and load their own audio files.
 
 ## Remaining work before merge
 
-1. Perform the final English and German documentation review.
-2. Perform the final brand and logo exclusion review.
-3. Run `python scripts/validate.py` on the final branch.
-4. Run `python scripts/package_source.py`.
-5. Assemble the final release assets and checksum manifest.
-6. Change the draft pull request to `Ready for review`.
-7. Squash merge the pull request into `main`.
+1. Change the draft pull request to `Ready for review`.
+2. Squash merge the pull request into `main`.
 
 ## Tag and GitHub Release
 
 After the merge:
 
-1. Create the annotated tag `v1.0.0` on the new `main` commit.
-2. Create a draft GitHub Release.
+1. Create a new GitHub Release and create tag `v1.0.0` on the new `main` commit.
+2. Save the release as a draft first.
 3. Upload:
 
 ```text
 MOBA-Module-Soundmodul-1.0.0-Windows-x64.exe
-MOBA-Module-Soundmodul-1.0.0-source.zip
 moba-module-soundmodul-wiring-de.png
 moba-module-soundmodul-wiring-en.png
 SHA256SUMS.txt
 ```
+
+GitHub automatically provides source-code archives in ZIP and TAR.GZ format for
+the tag. A separate manually generated source ZIP is not required for the public
+release. `scripts/package_source.py` remains available as an optional tool for
+local reproducible packages.
 
 4. Verify release notes and checksums.
 5. Publish the release.
