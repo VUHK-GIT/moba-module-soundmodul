@@ -15,13 +15,25 @@ application provides configuration, manual playback and diagnostics.
 - automatic COM-port discovery and manual port selection;
 - persistent configuration stored in Nano EEPROM;
 - permanent, random and interval-based playback modes;
-- BUSY detection using the measured analog signal on Nano A2;
+- BUSY detection on Nano A2; the BUSY line includes the external **R2 1 kΩ**
+  series resistor;
 - FIFO queue with duplicate suppression;
 - automatic fallback to hardware-input mode when the PC application closes,
   crashes, disconnects or stops communicating;
 - German user interface;
 - English source-code identifiers and comments;
 - German and English documentation.
+
+## Important audio-file requirement
+
+The Nano firmware and Windows application do **not** upload audio to the
+JQ6500-16P. Before first use, load the required sounds separately into the
+JQ6500 internal flash through the module's USB interface. Upload order defines
+the sound indexes: the first file is sound 1, the second file is sound 2, and so
+on.
+
+The repository does not distribute audio files or a proprietary JQ6500 uploader.
+See [docs/en/jq6500-sounds.md](docs/en/jq6500-sounds.md).
 
 ## Repository layout
 
@@ -31,22 +43,27 @@ software/purebasic/       Windows desktop application source
 software/purebasic/ui/    German UI template and modular CSS/JavaScript sources
 docs/en/                  English documentation
 docs/de/                  German documentation
+docs/assets/wiring/       Authoritative SVG wiring diagrams and net list
 scripts/                  Validation and packaging tools
 tests/firmware_host/      Host-side Arduino compatibility stubs
 ```
 
 ## Quick start
 
-1. Wire the Arduino Nano, JQ6500-16P and the ten inputs as described in
-   [docs/en/hardware.md](docs/en/hardware.md).
-2. Install the upstream `JQ6500_Serial` Arduino library.
-3. Upload
+1. Load the required sounds into the JQ6500-16P separately over USB. Record the
+   file order as the sound 1 through sound 10 mapping.
+2. Wire the Arduino Nano, JQ6500-16P and the ten inputs as described in
+   [docs/en/hardware.md](docs/en/hardware.md). Two separate 1 kΩ resistors are
+   required: R1 in the RX line and R2 in the BUSY-to-A2 line.
+3. Install the upstream `JQ6500_Serial` Arduino library.
+4. Upload
    `firmware/MOBA_Module_Soundmodul_Nano/MOBA_Module_Soundmodul_Nano.ino`.
-4. Run `python scripts/prepare_ui.py` to assemble the embedded interface.
-   Add the official logo locally before this step only for an authorized branded build.
-5. Build the Windows application with PureBasic 6.10 LTS or newer by opening
+5. Run `python scripts/prepare_ui.py` to assemble the embedded interface. Add
+   the official logo locally before this step only for an authorized branded
+   build.
+6. Build the Windows application with PureBasic 6.10 LTS or newer by opening
    `software/purebasic/MOBA_Module_Soundmodul.pb`.
-6. Start the application. It scans available COM ports automatically.
+7. Start the application. It scans available COM ports automatically.
 
 Detailed build instructions: [docs/en/build-windows.md](docs/en/build-windows.md)
 
@@ -68,4 +85,5 @@ Third-party notices are listed in
 ## Status
 
 Version 1.0.0 is the first stable release. The repository remains private until
-the release branch and documentation have been reviewed.
+the release branch, documentation, Windows build and hardware tests have been
+reviewed.
