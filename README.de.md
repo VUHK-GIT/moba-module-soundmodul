@@ -76,6 +76,11 @@ Ausführliche Bauanleitung: [docs/de/build-windows.md](docs/de/build-windows.md)
 Offizielle Windows-EXE-Dateien werden als Dateien des jeweiligen GitHub-Releases
 bereitgestellt. Sie werden nicht in den Quellcode-Branch eingecheckt.
 
+Die offizielle Version `1.0.0` wird als Windows-x64-EXE veröffentlicht. Die EXE
+ist zunächst nicht digital signiert; Windows SmartScreen kann deshalb auf
+Systemen ohne bestehende Dateireputation eine Warnung anzeigen. Die
+veröffentlichte SHA-256-Prüfsumme dient zur Integritätskontrolle.
+
 ## Lizenz
 
 Quellcode und Dokumentation stehen unter der [MIT-Lizenz](LICENSE).
@@ -85,3 +90,9 @@ Siehe [TRADEMARKS.md](TRADEMARKS.md) und [ASSETS.md](ASSETS.md).
 
 Hinweise zu Drittkomponenten stehen in
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## Status
+
+Version 1.0.0 wurde mit PureBasic 6.40 für Windows x64 erstellt und auf der
+Projekt-Hardware mit R1 und R2 funktional geprüft. Der Release-Branch bleibt bis
+zum Abschluss der letzten Veröffentlichungsprüfungen privat.
