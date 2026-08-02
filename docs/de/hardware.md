@@ -73,12 +73,13 @@ diesen Schreibvorgang nicht. Anleitung:
 
 ## BUSY-Referenzwerte
 
-Auf der bisherigen Zielhardware gemessene Werte:
+Mit eingebautem Serienwiderstand R2 1 kΩ wurden am 2. August 2026 folgende
+Werte erneut bestätigt:
 
 - Wiedergabe: ungefähr 537 bis 540 ADC-Schritte;
 - Leerlauf: ungefähr 2 bis 3 ADC-Schritte.
 
-Die Firmware verwendet 350 als Einschalt- und 150 als Ausschaltschwelle sowie
-30 ms Entprellung. Da R2 mit 1 kΩ nun verbindlicher Bestandteil der
-Releaseverdrahtung ist, müssen diese Werte beim abschließenden Hardwaretest mit
-der finalen Platine erneut bestätigt und dokumentiert werden.
+Die Firmware-Schwellen bleiben damit unverändert:
+
+- BUSY ein: 350 ADC-Schritte;
+- BUSY aus: 150 ADC-Schritte.
