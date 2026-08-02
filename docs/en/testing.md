@@ -38,7 +38,34 @@ Before publishing, complete and record these tests in the pull request:
 13. verify reset behavior and the expected possible speaker click;
 14. cold-start Nano and JQ6500 after complete power removal.
 
-## Release evidence
+## Release-candidate evidence
+
+The following status was confirmed on 2 August 2026:
+
+- Windows application built with PureBasic 6.40 for Windows x64;
+- generated release executable functionally tested on the Windows build system;
+- hardware setup with both separate resistors R1 and R2 functionally tested;
+- R1: Nano D11 -> 1 kΩ -> JQ6500 RX;
+- R2: JQ6500 BUSY -> 1 kΩ -> Nano A2;
+- verified release filename:
+  `MOBA-Module-Soundmodul-1.0.0-Windows-x64.exe`;
+- file size: 457728 bytes;
+- SHA-256:
+  `f7e7f848cc7c67181d3f7ac73f5abb816b72dacdd0afa2af39682b97c81c2946`;
+- embedded file and product version: `1.0.0.0`;
+- x64 Windows GUI, DPI awareness, normal-user execution, ASLR and DEP/NX were
+  confirmed through static PE inspection;
+- icon, version resource and application manifest are embedded;
+- the release executable is not digitally signed. Windows SmartScreen may
+  therefore display a warning on systems where the file has no established reputation.
+
+Still to be recorded before public release:
+
+- BUSY raw values while idle and playing with R2 installed;
+- sound-file order 1 through 10;
+- optional additional executable test on a second or clean Windows system.
+
+## General release evidence
 
 For version 1.0.0 record at least:
 
