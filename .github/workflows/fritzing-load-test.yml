@@ -14,6 +14,13 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+      - name: Reconstruct test FZZ
+        run: |
+          set -euxo pipefail
+          mkdir -p fritzing-ci
+          cat hardware/fritzing/ci-base64/part-* | base64 --decode > fritzing-ci/MOBA-Module-Soundmodul_1.0.0_KORRIGIERT.fzz
+          echo "63ff4cee15acd542ad52b5b7bc51577ae7557abac7456858ffbd9f9a66093e38  fritzing-ci/MOBA-Module-Soundmodul_1.0.0_KORRIGIERT.fzz" | sha256sum --check
+          unzip -t fritzing-ci/MOBA-Module-Soundmodul_1.0.0_KORRIGIERT.fzz
       - name: Install Fritzing and virtual display
         run: |
           sudo apt-get update
@@ -22,8 +29,6 @@ jobs:
       - name: Load FZZ and export every view
         run: |
           set -euxo pipefail
-          mkdir -p fritzing-ci
-          cp hardware/fritzing/MOBA-Module-Soundmodul_1.0.0_KORRIGIERT.fzz fritzing-ci/
           timeout 120s xvfb-run -a fritzing -svg "$PWD/fritzing-ci"
           find fritzing-ci -maxdepth 2 -type f -printf '%f %s bytes\n' | sort
           test -n "$(find fritzing-ci -type f -name '*_schematic.svg' -print -quit)"
