@@ -1,6 +1,7 @@
 name: Fritzing load test
 
 on:
+  pull_request:
   push:
     branches:
       - ci/fritzing-load-test
