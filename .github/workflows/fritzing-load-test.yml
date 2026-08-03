@@ -1,0 +1,36 @@
+name: Fritzing load test
+
+on:
+  push:
+    branches:
+      - ci/fritzing-load-test
+
+permissions:
+  contents: read
+
+jobs:
+  open-and-export:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Fritzing and virtual display
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fritzing xvfb
+          fritzing --version || true
+      - name: Load FZZ and export every view
+        run: |
+          set -euxo pipefail
+          mkdir -p fritzing-ci
+          cp hardware/fritzing/MOBA-Module-Soundmodul_1.0.0_KORRIGIERT.fzz fritzing-ci/
+          timeout 120s xvfb-run -a fritzing -svg "$PWD/fritzing-ci"
+          find fritzing-ci -maxdepth 2 -type f -printf '%f %s bytes\n' | sort
+          test -n "$(find fritzing-ci -type f -name '*_schematic.svg' -print -quit)"
+          test -n "$(find fritzing-ci -type f -name '*_breadboard.svg' -print -quit)"
+          test -n "$(find fritzing-ci -type f -name '*_pcb.svg' -print -quit)"
+      - name: Upload exported views
+        uses: actions/upload-artifact@v4
+        with:
+          name: fritzing-exported-views
+          path: fritzing-ci/*.svg
